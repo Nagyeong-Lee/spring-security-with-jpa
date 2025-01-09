@@ -39,7 +39,7 @@ public class NoteServiceImpl implements NoteService {
             Note note = result.get();
             note.changeTitle(noteDTO.getTitle());
             note.changeContent(noteDTO.getContent());
-            noteRepository.save(dtoToEntity(noteDTO));
+            noteRepository.save(note);
         }
     }
 
@@ -50,7 +50,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDTO> getAllWithWriter(String writerEmail) {
-        List<Note> noteList = noteRepository.findAllByEmail(writerEmail);
+        List<Note> noteList = noteRepository.findAllByWriterEmail(writerEmail);
         return noteList.stream()
                 .map(note -> entityToDTO(note))
                 .collect(Collectors.toList());

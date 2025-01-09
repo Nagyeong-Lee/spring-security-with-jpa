@@ -13,5 +13,5 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     Optional<Note> findById(Long num);
 
     @EntityGraph(attributePaths = {"writer"}, type = EntityGraph.EntityGraphType.LOAD)
-    List<Note> findAllByEmail(String writerEmail);
+    List<Note> findAllByWriterEmail(String writerEmail);
 }
